@@ -8,7 +8,13 @@ React + Vite + Tailwind CSS で作成した
 学習記録、予定管理、日記、気づきメモなどに使える  
 シンプルなカレンダーメモアプリです。
 
+
+
 ---
+
+##  デモ
+https://calen-chan.vercel.app/
+
 
 ## 使用技術
 
@@ -82,9 +88,6 @@ text src ├── App.jsx ├── App.css └── components ├── Cale
 
 ---
 
-###  ブラウザで確認
-
-http://localhost:5173](https://calen-chan.vercel.app/
 
 ---
 
