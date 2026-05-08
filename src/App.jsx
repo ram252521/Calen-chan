@@ -1,13 +1,13 @@
 import { useState } from "react";
 import "./App.css";
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 import CalendarPanel from "./components/CalendarPanel";
 import MemoEditor from "./components/MemoEditor";
 import MemoList from "./components/MemoList";
 
 export default function App() {
-  const [date, setDate] = useState(new Date());//今の日付で初期化
+  const [date, setDate] = useState(new Date()); //今の日付で初期化
   const [memo, setMemo] = useState("");
   const [savedMessage, setSavedMessage] = useState("");
 
@@ -15,7 +15,7 @@ export default function App() {
     return JSON.parse(localStorage.getItem("memos") || "{}");
   }); //ローカルから取り出しJSON.parseで文字列をオブジェクトにし、memos(state)にセットする
 
-	//カレンダーを成形
+  //カレンダーを成形
   const formatDate = (date) => {
     return date.toLocaleDateString("ja-JP", {
       year: "numeric",
@@ -23,15 +23,14 @@ export default function App() {
       day: "numeric",
     });
   };
-	
-	
-  const handleSelectMemo = (dateKey) => {
-  const selectedDate = new Date(dateKey);
 
-  setDate(selectedDate);
-  setMemo(memos[dateKey] || "");
-};
-  
+  const handleSelectMemo = (dateKey) => {
+    const selectedDate = new Date(dateKey);
+
+    setDate(selectedDate);
+    setMemo(memos[dateKey] || "");
+  };
+
   const handleDateChange = (newDate) => {
     setDate(newDate);
 
@@ -56,49 +55,48 @@ export default function App() {
       setSavedMessage("");
     }, 1500);
   };
-  
+
   //削除機能
-  
+
   const handleDelete = () => {
-	  　  		  if (!confirm("本当に削除しますか？")) return;
-  const newMemos = { ...memos };
+    if (!confirm("本当に削除しますか？")) return;
+    const newMemos = { ...memos };
 
-  delete newMemos[dateKey]; // ← ここが
-
-  setMemos(newMemos);
-  localStorage.setItem("memos", JSON.stringify(newMemos));
-
-
-  setMemo(""); // 入力欄もクリア
-  setSavedMessage("削除しました");
-
-  setTimeout(() => {
-    setSavedMessage("");
-  }, 1000);
-};
-  
-  //自動保存
-useEffect(() => {
-  const timer = setTimeout(() => {
-    const newMemos = {
-      ...memos,
-      [dateKey]: memo,
-    };
+    delete newMemos[dateKey]; // ← ここが
 
     setMemos(newMemos);
     localStorage.setItem("memos", JSON.stringify(newMemos));
 
-    if (memo.trim() !== "") {
-      setSavedMessage("自動保存しました");
-    }
+    setMemo(""); // 入力欄もクリア
+    setSavedMessage("削除しました");
 
     setTimeout(() => {
       setSavedMessage("");
     }, 1000);
-  }, 500);
+  };
 
-  return () => clearTimeout(timer);
-}, [memo, dateKey]); // ← 常に2個
+  //自動保存
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const newMemos = {
+        ...memos,
+        [dateKey]: memo,
+      };
+
+      setMemos(newMemos);
+      localStorage.setItem("memos", JSON.stringify(newMemos));
+
+      if (memo.trim() !== "") {
+        setSavedMessage("自動保存しました");
+      }
+
+      setTimeout(() => {
+        setSavedMessage("");
+      }, 1000);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [memo, dateKey]); // ← 常に2個
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white p-6">
       <div className="max-w-5xl mx-auto">
@@ -107,12 +105,10 @@ useEffect(() => {
             RCMA -React Calendar Memo App-
           </p>
 
-          <h1 className="text-4xl font-bold mt-2">
-            Calendar Memo
-          </h1>
+          <h1 className="text-4xl font-bold mt-2">Calendar Memo</h1>
 
           <p className="text-slate-400 mt-2">
-            日付とメモが連動したメモアプリで
+            日付とメモが連動したメモアプリ、カレンちゃん
           </p>
         </header>
 
@@ -125,20 +121,14 @@ useEffect(() => {
 
           <MemoEditor
             dateLabel={formatDate(date)}
-
             memo={memo}
             setMemo={setMemo}
             handleSave={handleSave}
-			handleDelete={handleDelete}
+            handleDelete={handleDelete}
             savedMessage={savedMessage}
-			
           />
-
         </div>
-					<MemoList
-  memos={memos}
-  onSelectMemo={handleSelectMemo}/>
-			
+        <MemoList memos={memos} onSelectMemo={handleSelectMemo} />
       </div>
     </div>
   );
