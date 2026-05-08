@@ -82,23 +82,9 @@ text src ├── App.jsx ├── App.css └── components ├── Cale
 
 ---
 
-## 起動方法
+###  ブラウザで確認
 
-### 1. インストール
-
-bash npm install
-
----
-
-### 2. 開発サーバー起動
-
-bash npm run dev
-
----
-
-### 3. ブラウザで確認
-
-text http://localhost:5173
+http://localhost:5173](https://calen-chan.vercel.app/
 
 ---
 
