@@ -1,16 +1,144 @@
-# React + Vite
+# Calendar Memo App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Vite + Tailwind CSS で作成した  
+日付連動型のメモアプリです。
 
-Currently, two official plugins are available:
+カレンダーから日付を選択し、その日に対応したメモを保存できます。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+学習記録、予定管理、日記、気づきメモなどに使える  
+シンプルなカレンダーメモアプリです。
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 使用技術
 
-## Expanding the ESLint configuration
+- React
+- Vite
+- Tailwind CSS
+- react-calendar
+- LocalStorage
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 主な機能
+
+### 📅 カレンダー機能
+
+- 日付をクリックして選択
+- 前月・次月へ移動
+- 土日・祝日の色分け
+- メモが存在する日にマーク表示
+- 当日の日付を初期表示
+
+---
+
+### 📝 メモ機能
+
+- 選択した日付ごとのメモ保存
+- 自動保存（入力後少し待つと保存）
+- 手動保存ボタン
+- 削除機能
+- 保存完了メッセージ表示
+
+---
+
+### 📚 メモ一覧機能
+
+- 保存済みメモを一覧表示
+- 新しい日付順に並び替え
+- 一覧からクリックでその日のメモへ移動
+
+---
+
+### 🔍 検索機能
+
+- 保存済みメモをキーワード検索
+- 日付・本文の両方から検索可能
+
+---
+
+## データ保存について
+
+保存したメモはブラウザの LocalStorage に保存されます。
+
+そのため：
+
+- ページを閉じても消えない
+- 再読み込みしても残る
+- サーバー不要
+
+ただし、
+
+- ブラウザのデータ削除
+- 別端末
+
+では引き継がれません。
+
+---
+
+## ディレクトリ構成
+
+text src ├── App.jsx ├── App.css └── components ├── CalendarPanel.jsx ├── MemoEditor.jsx └── MemoList.jsx
+
+---
+
+## 起動方法
+
+### 1. インストール
+
+bash npm install
+
+---
+
+### 2. 開発サーバー起動
+
+bash npm run dev
+
+---
+
+### 3. ブラウザで確認
+
+text http://localhost:5173
+
+---
+
+## 今後追加したい機能
+
+- 月別表示
+- タグ機能
+- Markdown対応
+- PDF出力
+- Google Calendar連携
+- Firebase保存
+- ログイン機能
+- スマホ最適化強化
+
+---
+
+## 学習ポイント
+
+このアプリでは以下を学習できます。
+
+- useState
+- useEffect
+- props
+- コンポーネント分割
+- LocalStorage
+- Reactの状態管理
+- Tailwind CSS
+- ライブラリ活用（react-calendar）
+
+---
+
+## 制作目的
+
+React学習のアウトプットとして作成。
+
+「実際に使えるものを作る」をテーマに  
+日常でも使えるアプリとして設計しました。
+
+---
+
+## 作者
+
+React学習中の個人開発作品です。
